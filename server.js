@@ -7,7 +7,7 @@ const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
 
 const PORT = 8080;
-const DB_FILE = process.env.VERCEL ? '/tmp/inventory.db' : path.join(__dirname, 'inventory.db');
+const DB_FILE = process.env.VERCEL ? ':memory:' : path.join(__dirname, 'inventory.db');
 const NVIDIA_API_KEY = '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';
 
 // Initialize SQLite database

@@ -3,7 +3,17 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "categories.csv",
+          "employees.csv",
+          "assets.csv",
+          "asset_allocations.csv",
+          "returns.csv",
+          "damage_reports.csv"
+        ]
+      }
     }
   ],
   "routes": [
