@@ -7,7 +7,7 @@ const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
 
 const PORT = 8080;
-const DB_FILE = path.join(__dirname, 'inventory.db');
+const DB_FILE = process.env.VERCEL ? '/tmp/inventory.db' : path.join(__dirname, 'inventory.db');
 const NVIDIA_API_KEY = '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';
 
 // Initialize SQLite database
@@ -832,8 +832,8 @@ ${contextSummary}`
   }
 }
 
-// Server Request Listener
-const server = http.createServer((req, res) => {
+// Server Request Listener Function
+const requestHandler = (req, res) => {
   console.log(`${req.method} ${req.url}`);
 
   // 1. API Endpoints (JSON)
@@ -889,7 +889,7 @@ const server = http.createServer((req, res) => {
       res.end(content, 'utf-8');
     }
   });
-});
+};
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -902,14 +902,19 @@ const mimeTypes = {
   '.svg': 'image/svg+xml'
 };
 
-// Start Server
+// Start Server locally or bootstrap on Vercel
 try {
   setupSchema();
   seedDatabaseFromCSVs();
   
-  server.listen(PORT, () => {
-    console.log(`Node SQLite Server running at http://localhost:${PORT}/`);
-  });
+  if (!process.env.VERCEL) {
+    const server = http.createServer(requestHandler);
+    server.listen(PORT, () => {
+      console.log(`Node SQLite Server running at http://localhost:${PORT}/`);
+    });
+  }
 } catch (error) {
   console.error("Critical server failure:", error);
 }
+
+module.exports = requestHandler;
