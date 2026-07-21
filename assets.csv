@@ -1,0 +1,151 @@
+AssetID,AssetName,Category,Brand,Model,SerialNumber,PurchaseDate,Status
+AST001,LG Monitor,Monitor,LG,LG-803,SN100001,2025-02-22,In Stock
+AST002,Google Phone,Phone,Google,GO-357,SN100002,2025-05-06,Allocated
+AST003,Apple Phone,Phone,Apple,AP-441,SN100003,2025-01-01,In Stock
+AST004,LG Monitor,Monitor,LG,LG-859,SN100004,2025-02-11,In Stock
+AST005,Anker Accessory,Accessory,Anker,AN-109,SN100005,2025-05-24,In Stock
+AST006,Dell Laptop,Laptop,Dell,DE-252,SN100006,2025-06-26,In Stock
+AST007,Lenovo Laptop,Laptop,Lenovo,LE-665,SN100007,2025-05-30,In Stock
+AST008,Samsung Monitor,Monitor,Samsung,SA-142,SN100008,2025-02-02,Allocated
+AST009,Lenovo Laptop,Laptop,Lenovo,LE-798,SN100009,2025-02-23,In Stock
+AST010,Dell Monitor,Monitor,Dell,DE-898,SN100010,2025-04-01,Allocated
+AST011,HP Monitor,Monitor,HP,HP-919,SN100011,2025-02-11,In Stock
+AST012,Samsung Monitor,Monitor,Samsung,SA-283,SN100012,2025-01-07,In Stock
+AST013,Samsung Phone,Phone,Samsung,SA-984,SN100013,2025-06-21,In Stock
+AST014,LG Monitor,Monitor,LG,LG-906,SN100014,2025-02-10,In Stock
+AST015,Apple Laptop,Laptop,Apple,AP-979,SN100015,2025-01-10,In Stock
+AST016,Dell Accessory,Accessory,Dell,DE-936,SN100016,2025-02-21,In Stock
+AST017,HP Accessory,Accessory,HP,HP-940,SN100017,2025-03-20,Allocated
+AST018,HP Accessory,Accessory,HP,HP-985,SN100018,2025-03-13,In Stock
+AST019,Lenovo Laptop,Laptop,Lenovo,LE-756,SN100019,2025-03-31,In Stock
+AST020,HP Accessory,Accessory,HP,HP-218,SN100020,2025-01-08,In Stock
+AST021,Apple Phone,Phone,Apple,AP-371,SN100021,2025-05-29,Allocated
+AST022,Google Phone,Phone,Google,GO-546,SN100022,2025-03-22,In Stock
+AST023,Apple Laptop,Laptop,Apple,AP-294,SN100023,2025-05-28,In Stock
+AST024,Apple Phone,Phone,Apple,AP-101,SN100024,2025-04-22,Allocated
+AST025,LG Monitor,Monitor,LG,LG-171,SN100025,2025-04-21,In Stock
+AST026,Google Phone,Phone,Google,GO-779,SN100026,2025-03-22,In Stock
+AST027,Lenovo Laptop,Laptop,Lenovo,LE-416,SN100027,2025-05-10,In Stock
+AST028,HP Accessory,Accessory,HP,HP-813,SN100028,2025-04-14,In Stock
+AST029,Google Phone,Phone,Google,GO-296,SN100029,2025-02-02,Damaged
+AST030,Samsung Phone,Phone,Samsung,SA-953,SN100030,2025-05-21,Allocated
+AST031,HP Accessory,Accessory,HP,HP-552,SN100031,2025-04-30,In Stock
+AST032,Dell Accessory,Accessory,Dell,DE-584,SN100032,2025-05-11,In Stock
+AST033,Dell Monitor,Monitor,Dell,DE-627,SN100033,2025-03-14,In Stock
+AST034,Apple Phone,Phone,Apple,AP-788,SN100034,2025-03-02,In Stock
+AST035,Apple Phone,Phone,Apple,AP-250,SN100035,2025-02-20,In Stock
+AST036,Dell Laptop,Laptop,Dell,DE-586,SN100036,2025-03-04,In Stock
+AST037,Apple Laptop,Laptop,Apple,AP-744,SN100037,2025-04-17,In Stock
+AST038,Samsung Monitor,Monitor,Samsung,SA-509,SN100038,2025-05-07,In Stock
+AST039,HP Monitor,Monitor,HP,HP-804,SN100039,2025-06-17,In Stock
+AST040,Dell Laptop,Laptop,Dell,DE-324,SN100040,2025-04-19,Allocated
+AST041,Logitech Accessory,Accessory,Logitech,LO-355,SN100041,2025-05-23,In Stock
+AST042,Apple Laptop,Laptop,Apple,AP-920,SN100042,2025-02-04,In Stock
+AST043,HP Accessory,Accessory,HP,HP-727,SN100043,2025-04-24,In Stock
+AST044,Anker Accessory,Accessory,Anker,AN-861,SN100044,2025-02-10,In Stock
+AST045,Anker Accessory,Accessory,Anker,AN-869,SN100045,2025-03-08,Allocated
+AST046,Dell Accessory,Accessory,Dell,DE-550,SN100046,2025-03-12,In Stock
+AST047,Lenovo Laptop,Laptop,Lenovo,LE-378,SN100047,2025-03-02,Allocated
+AST048,HP Laptop,Laptop,HP,HP-336,SN100048,2025-02-08,In Stock
+AST049,Dell Accessory,Accessory,Dell,DE-319,SN100049,2025-06-30,In Stock
+AST050,Apple Laptop,Laptop,Apple,AP-438,SN100050,2025-04-15,Allocated
+AST051,Samsung Monitor,Monitor,Samsung,SA-888,SN100051,2025-04-10,In Stock
+AST052,Apple Laptop,Laptop,Apple,AP-106,SN100052,2025-05-03,In Stock
+AST053,Samsung Phone,Phone,Samsung,SA-973,SN100053,2025-04-10,In Stock
+AST054,Dell Accessory,Accessory,Dell,DE-324,SN100054,2025-05-05,In Stock
+AST055,Samsung Phone,Phone,Samsung,SA-129,SN100055,2025-05-05,In Stock
+AST056,HP Accessory,Accessory,HP,HP-795,SN100056,2025-06-21,In Stock
+AST057,Dell Accessory,Accessory,Dell,DE-230,SN100057,2025-04-30,Allocated
+AST058,Dell Laptop,Laptop,Dell,DE-538,SN100058,2025-06-14,Allocated
+AST059,Lenovo Laptop,Laptop,Lenovo,LE-435,SN100059,2025-04-08,Damaged
+AST060,Samsung Phone,Phone,Samsung,SA-870,SN100060,2025-03-13,Allocated
+AST061,Logitech Accessory,Accessory,Logitech,LO-153,SN100061,2025-05-19,In Stock
+AST062,Apple Phone,Phone,Apple,AP-170,SN100062,2025-06-16,In Stock
+AST063,Dell Laptop,Laptop,Dell,DE-304,SN100063,2025-03-05,Allocated
+AST064,Logitech Accessory,Accessory,Logitech,LO-323,SN100064,2025-05-25,Damaged
+AST065,Dell Monitor,Monitor,Dell,DE-418,SN100065,2025-02-11,In Stock
+AST066,Dell Laptop,Laptop,Dell,DE-689,SN100066,2025-03-21,In Stock
+AST067,Anker Accessory,Accessory,Anker,AN-177,SN100067,2025-02-20,Allocated
+AST068,Dell Monitor,Monitor,Dell,DE-891,SN100068,2025-06-28,In Stock
+AST069,Google Phone,Phone,Google,GO-924,SN100069,2025-06-03,In Stock
+AST070,Dell Laptop,Laptop,Dell,DE-645,SN100070,2025-03-30,In Stock
+AST071,HP Accessory,Accessory,HP,HP-618,SN100071,2025-01-18,In Stock
+AST072,Apple Phone,Phone,Apple,AP-942,SN100072,2025-04-18,In Stock
+AST073,Logitech Accessory,Accessory,Logitech,LO-470,SN100073,2025-04-21,In Stock
+AST074,Dell Accessory,Accessory,Dell,DE-280,SN100074,2025-04-22,In Stock
+AST075,Google Phone,Phone,Google,GO-893,SN100075,2025-05-18,In Stock
+AST076,Anker Accessory,Accessory,Anker,AN-945,SN100076,2025-04-22,Allocated
+AST077,Dell Monitor,Monitor,Dell,DE-561,SN100077,2025-03-13,In Stock
+AST078,Samsung Monitor,Monitor,Samsung,SA-724,SN100078,2025-05-26,In Stock
+AST079,HP Accessory,Accessory,HP,HP-606,SN100079,2025-01-08,In Stock
+AST080,Apple Phone,Phone,Apple,AP-317,SN100080,2025-05-05,Allocated
+AST081,Google Phone,Phone,Google,GO-382,SN100081,2025-06-29,In Stock
+AST082,HP Laptop,Laptop,HP,HP-347,SN100082,2025-01-22,In Stock
+AST083,Anker Accessory,Accessory,Anker,AN-876,SN100083,2025-05-23,In Stock
+AST084,Samsung Monitor,Monitor,Samsung,SA-828,SN100084,2025-06-15,In Stock
+AST085,Anker Accessory,Accessory,Anker,AN-195,SN100085,2025-01-05,Damaged
+AST086,LG Monitor,Monitor,LG,LG-695,SN100086,2025-06-19,In Stock
+AST087,Samsung Phone,Phone,Samsung,SA-643,SN100087,2025-05-22,In Stock
+AST088,Samsung Phone,Phone,Samsung,SA-438,SN100088,2025-05-21,In Stock
+AST089,Google Phone,Phone,Google,GO-377,SN100089,2025-04-27,In Stock
+AST090,Samsung Phone,Phone,Samsung,SA-223,SN100090,2025-03-01,Allocated
+AST091,HP Monitor,Monitor,HP,HP-856,SN100091,2025-02-25,In Stock
+AST092,HP Accessory,Accessory,HP,HP-878,SN100092,2025-05-31,In Stock
+AST093,Apple Phone,Phone,Apple,AP-403,SN100093,2025-02-19,In Stock
+AST094,LG Monitor,Monitor,LG,LG-409,SN100094,2025-02-15,Allocated
+AST095,Apple Phone,Phone,Apple,AP-666,SN100095,2025-01-14,In Stock
+AST096,Google Phone,Phone,Google,GO-753,SN100096,2025-02-02,Allocated
+AST097,Samsung Phone,Phone,Samsung,SA-551,SN100097,2025-05-03,Allocated
+AST098,Samsung Phone,Phone,Samsung,SA-941,SN100098,2025-01-30,In Stock
+AST099,Apple Laptop,Laptop,Apple,AP-175,SN100099,2025-05-06,In Stock
+AST100,HP Laptop,Laptop,HP,HP-930,SN100100,2025-02-08,Allocated
+AST101,Apple Laptop,Laptop,Apple,AP-710,SN100101,2025-06-05,In Stock
+AST102,Samsung Monitor,Monitor,Samsung,SA-553,SN100102,2025-04-26,Damaged
+AST103,Google Phone,Phone,Google,GO-161,SN100103,2025-06-08,In Stock
+AST104,HP Laptop,Laptop,HP,HP-316,SN100104,2025-06-10,In Stock
+AST105,Google Phone,Phone,Google,GO-260,SN100105,2025-01-21,In Stock
+AST106,HP Monitor,Monitor,HP,HP-176,SN100106,2025-05-22,In Stock
+AST107,Dell Monitor,Monitor,Dell,DE-561,SN100107,2025-04-15,In Stock
+AST108,HP Accessory,Accessory,HP,HP-337,SN100108,2025-01-09,In Stock
+AST109,Google Phone,Phone,Google,GO-819,SN100109,2025-03-14,In Stock
+AST110,Logitech Accessory,Accessory,Logitech,LO-339,SN100110,2025-06-25,In Stock
+AST111,Google Phone,Phone,Google,GO-777,SN100111,2025-05-31,In Stock
+AST112,Samsung Monitor,Monitor,Samsung,SA-657,SN100112,2025-01-30,In Stock
+AST113,HP Monitor,Monitor,HP,HP-946,SN100113,2025-03-10,In Stock
+AST114,Dell Monitor,Monitor,Dell,DE-269,SN100114,2025-01-16,In Stock
+AST115,Google Phone,Phone,Google,GO-395,SN100115,2025-05-26,Allocated
+AST116,Google Phone,Phone,Google,GO-378,SN100116,2025-04-14,Damaged
+AST117,Logitech Accessory,Accessory,Logitech,LO-140,SN100117,2025-06-03,Allocated
+AST118,Apple Phone,Phone,Apple,AP-334,SN100118,2025-01-24,In Stock
+AST119,Lenovo Laptop,Laptop,Lenovo,LE-141,SN100119,2025-05-28,In Stock
+AST120,Samsung Monitor,Monitor,Samsung,SA-767,SN100120,2025-05-13,Allocated
+AST121,Anker Accessory,Accessory,Anker,AN-581,SN100121,2025-01-24,Allocated
+AST122,HP Laptop,Laptop,HP,HP-521,SN100122,2025-03-26,In Stock
+AST123,HP Accessory,Accessory,HP,HP-510,SN100123,2025-06-19,In Stock
+AST124,Apple Laptop,Laptop,Apple,AP-422,SN100124,2025-01-23,In Stock
+AST125,Samsung Phone,Phone,Samsung,SA-891,SN100125,2025-01-30,In Stock
+AST126,Logitech Accessory,Accessory,Logitech,LO-990,SN100126,2025-06-18,In Stock
+AST127,Anker Accessory,Accessory,Anker,AN-292,SN100127,2025-01-14,In Stock
+AST128,Google Phone,Phone,Google,GO-740,SN100128,2025-05-08,Allocated
+AST129,LG Monitor,Monitor,LG,LG-815,SN100129,2025-04-23,Damaged
+AST130,HP Monitor,Monitor,HP,HP-664,SN100130,2025-03-21,In Stock
+AST131,Apple Laptop,Laptop,Apple,AP-330,SN100131,2025-01-24,In Stock
+AST132,Apple Laptop,Laptop,Apple,AP-763,SN100132,2025-01-31,In Stock
+AST133,Samsung Monitor,Monitor,Samsung,SA-621,SN100133,2025-03-16,In Stock
+AST134,Samsung Phone,Phone,Samsung,SA-583,SN100134,2025-05-04,In Stock
+AST135,Samsung Monitor,Monitor,Samsung,SA-248,SN100135,2025-05-22,In Stock
+AST136,Dell Accessory,Accessory,Dell,DE-620,SN100136,2025-06-03,In Stock
+AST137,Dell Monitor,Monitor,Dell,DE-891,SN100137,2025-03-12,In Stock
+AST138,HP Accessory,Accessory,HP,HP-373,SN100138,2025-05-10,Allocated
+AST139,Dell Accessory,Accessory,Dell,DE-651,SN100139,2025-04-25,In Stock
+AST140,HP Accessory,Accessory,HP,HP-665,SN100140,2025-03-27,Allocated
+AST141,Apple Phone,Phone,Apple,AP-344,SN100141,2025-06-28,In Stock
+AST142,Dell Accessory,Accessory,Dell,DE-144,SN100142,2025-04-16,Allocated
+AST143,Anker Accessory,Accessory,Anker,AN-911,SN100143,2025-06-19,Damaged
+AST144,HP Laptop,Laptop,HP,HP-704,SN100144,2025-05-09,In Stock
+AST145,Apple Phone,Phone,Apple,AP-202,SN100145,2025-04-23,In Stock
+AST146,Logitech Accessory,Accessory,Logitech,LO-519,SN100146,2025-02-06,In Stock
+AST147,Dell Monitor,Monitor,Dell,DE-900,SN100147,2025-05-01,Damaged
+AST148,Lenovo Laptop,Laptop,Lenovo,LE-979,SN100148,2025-06-22,In Stock
+AST149,HP Accessory,Accessory,HP,HP-835,SN100149,2025-06-10,Allocated
+AST150,Dell Laptop,Laptop,Dell,DE-746,SN100150,2025-03-02,Damaged

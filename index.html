@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Inventory System - Dashboard Portal</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+  
+  <div class="app-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon-wrapper">
+          <i data-lucide="box" class="brand-icon"></i>
+        </div>
+        <div class="brand-text">
+          <h2 id="brandName">Inventory System</h2>
+          <span id="brandSubName">CORPORATE PORTAL</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li>
+            <a href="#" class="nav-link active" data-target="dashboard">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="ai-inventory">
+              <i data-lucide="sparkles" class="ai-sparkles-icon"></i>
+              <span>AI Inventory</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="assets">
+              <i data-lucide="laptop"></i>
+              <span>Assets</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="categories">
+              <i data-lucide="tags"></i>
+              <span>Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="allocations">
+              <i data-lucide="user-check"></i>
+              <span>Allocation</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="returns">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Returns</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="damage-reports">
+              <i data-lucide="alert-triangle"></i>
+              <span>Damage Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="employees">
+              <i data-lucide="users"></i>
+              <span>Employees</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="reports">
+              <i data-lucide="bar-chart-3"></i>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="history">
+              <i data-lucide="history"></i>
+              <span>History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="requests">
+              <i data-lucide="git-pull-request"></i>
+              <span>Request</span>
+              <span class="badge badge-new" id="requestsBadge" style="display: none;">NEW</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="reminders">
+              <i data-lucide="bell-ring"></i>
+              <span>Reminders</span>
+              <span class="badge badge-alert" id="remindersBadge" style="display: none;">0</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" data-target="settings">
+              <i data-lucide="settings"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a href="#" class="nav-link logout-link" id="btnLogOut">
+          <i data-lucide="log-out"></i>
+          <span>Logout Session</span>
+        </a>
+      </div>
+    </aside>
+    
+    <!-- MAIN WRAPPER -->
+    <main class="app-main">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="app-header">
+        <button class="btn-toggle-sidebar" id="toggleSidebar">
+          <i data-lucide="menu"></i>
+        </button>
+        
+        <div class="header-search">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="globalSearch" placeholder="Search assets, employees, categories...">
+        </div>
+        
+        <div class="header-actions">
+          <div class="header-notification-trigger" id="btnNotifications">
+            <i data-lucide="bell" class="notification-icon"></i>
+            <span class="notification-badge" id="headerNotificationBadge" style="display: none;"></span>
+            
+            <div class="notifications-dropdown" id="notificationsDropdown">
+              <div class="notifications-dropdown-header">
+                <h4>System Alerts</h4>
+                <button class="btn-clear-notifications" id="btnClearNotifications">Mark read</button>
+              </div>
+              <ul class="notifications-list" id="notificationsList">
+                <li class="empty-state">No active notifications</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="header-user-profile" id="userProfileTrigger">
+            <div class="user-avatar" id="adminInitials">AP</div>
+            <div class="user-info">
+              <span class="user-name" id="adminNameDisplay">Aarav Patel4</span>
+              <span class="user-role" id="adminRoleDisplay">Administrator</span>
+            </div>
+            <i data-lucide="chevron-down" class="profile-arrow"></i>
+            
+            <div class="profile-dropdown" id="profileDropdown">
+              <a href="#" class="profile-dropdown-item" data-target="settings"><i data-lucide="settings"></i> Profile Settings</a>
+              <a href="#" class="profile-dropdown-item" id="btnThemeToggle"><i data-lucide="moon"></i> Toggle Dark Mode</a>
+              <hr>
+              <a href="#" class="profile-dropdown-item text-danger" id="btnResetDB"><i data-lucide="refresh-cw"></i> Reset Database</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- CONTENT CONTAINER -->
+      <div class="content-body">
+        
+        <!-- ==================== DASHBOARD VIEW ==================== -->
+        <section id="view-dashboard" class="content-view active">
+          <!-- Stats Cards (Top) -->
+          <div class="stats-grid">
+            <div class="stat-card" data-action="view-assets" data-status-filter="">
+              <div class="stat-info">
+                <span class="stat-label">Total Assets</span>
+                <h3 class="stat-val" id="stat-total-assets">0</h3>
+                <span class="stat-action-link">View all <i data-lucide="chevron-right"></i></span>
+              </div>
+              <div class="stat-icon-box bg-purple-light text-purple">
+                <i data-lucide="box"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-assets" data-status-filter="In Stock">
+              <div class="stat-info">
+                <span class="stat-label">In Stock</span>
+                <h3 class="stat-val" id="stat-instock-assets">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-right"></i></span>
+              </div>
+              <div class="stat-icon-box bg-green-light text-green">
+                <i data-lucide="file-text"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-allocations" data-status-filter="">
+              <div class="stat-info">
+                <span class="stat-label">Allocated</span>
+                <h3 class="stat-val" id="stat-allocated-assets">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-right"></i></span>
+              </div>
+              <div class="stat-icon-box bg-amber-light text-amber">
+                <i data-lucide="user"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-damage-reports" data-status-filter="Open">
+              <div class="stat-info">
+                <span class="stat-label">Damaged</span>
+                <h3 class="stat-val" id="stat-damaged-assets">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-right"></i></span>
+              </div>
+              <div class="stat-icon-box bg-red-light text-red">
+                <i data-lucide="alert-triangle"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-reminders" data-status-filter="low-stock">
+              <div class="stat-info">
+                <span class="stat-label">Low Stock Alerts</span>
+                <h3 class="stat-val" id="stat-low-stock">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-right"></i></span>
+              </div>
+              <div class="stat-icon-box bg-blue-light text-blue">
+                <i data-lucide="bell"></i>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Middle Charts & Lists -->
+          <div class="dashboard-charts-grid">
+            <!-- Donut Chart -->
+            <div class="chart-card">
+              <div class="card-header">
+                <h3>Stock Summary by Category</h3>
+              </div>
+              <div class="card-body donut-chart-container">
+                <canvas id="donutChart"></canvas>
+              </div>
+            </div>
+            
+            <!-- Line Chart -->
+            <div class="chart-card col-span-2">
+              <div class="card-header">
+                <h3>Allocation Overview</h3>
+              </div>
+              <div class="card-body line-chart-container">
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+            
+            <!-- Recent Activities -->
+            <div class="chart-card">
+              <div class="card-header">
+                <h3>Recent Activities</h3>
+              </div>
+              <div class="card-body p-0">
+                <ul class="activity-list" id="dashboardActivitiesList">
+                  <!-- Injected by JavaScript -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bottom Cards -->
+          <div class="stats-grid bottom-stats">
+            <div class="stat-card" data-action="view-reminders" data-status-filter="overdue">
+              <div class="stat-info">
+                <span class="stat-label">Overdue Returns</span>
+                <h3 class="stat-val" id="stat-overdue-returns">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-down"></i></span>
+              </div>
+              <div class="stat-icon-box bg-red-light text-red">
+                <i data-lucide="clock"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-reminders" data-status-filter="due-soon">
+              <div class="stat-info">
+                <span class="stat-label">Assets Due Soon</span>
+                <h3 class="stat-val" id="stat-due-soon">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-down"></i></span>
+              </div>
+              <div class="stat-icon-box bg-green-light text-green">
+                <i data-lucide="calendar"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-damage-reports" data-status-filter="Open">
+              <div class="stat-info">
+                <span class="stat-label">Damage Reports Open</span>
+                <h3 class="stat-val" id="stat-damage-reports-open">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-down"></i></span>
+              </div>
+              <div class="stat-icon-box bg-amber-light text-amber">
+                <i data-lucide="alert-circle"></i>
+              </div>
+            </div>
+            
+            <div class="stat-card" data-action="view-employees" data-status-filter="">
+              <div class="stat-info">
+                <span class="stat-label">Total Employees</span>
+                <h3 class="stat-val" id="stat-total-employees">0</h3>
+                <span class="stat-action-link">View details <i data-lucide="chevron-down"></i></span>
+              </div>
+              <div class="stat-icon-box bg-blue-light text-blue">
+                <i data-lucide="users-2"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== AI INVENTORY VIEW ==================== -->
+        <section id="view-ai-inventory" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>AI Inventory assistant</h1>
+              <p>Predict stock depletion dates, optimize allocations, and analyze hardware trends.</p>
+            </div>
+            <div class="header-badges">
+              <span class="ai-status-badge"><i data-lucide="sparkles"></i> AI Engine Online</span>
+            </div>
+          </div>
+          
+          <div class="ai-dashboard-layout">
+            <!-- Sidebar Assistant Prompt Cards -->
+            <div class="ai-prompts-panel">
+              <h3 class="panel-subtitle">Ask AI Assistant</h3>
+              <div class="ai-prompt-cards">
+                <div class="ai-prompt-card" data-prompt="stock-forecast">
+                  <div class="ai-prompt-card-icon"><i data-lucide="trending-up"></i></div>
+                  <div class="ai-prompt-card-text">
+                    <h4>Stock Depletion Forecast</h4>
+                    <p>Calculate when current laptops and monitors will run out based on monthly demand.</p>
+                  </div>
+                </div>
+                <div class="ai-prompt-card" data-prompt="allocation-optim">
+                  <div class="ai-prompt-card-icon"><i data-lucide="smile"></i></div>
+                  <div class="ai-prompt-card-text">
+                    <h4>Allocation Recommendations</h4>
+                    <p>Identify optimal hardware items to fulfill pending requests based on age and history.</p>
+                  </div>
+                </div>
+                <div class="ai-prompt-card" data-prompt="health-report">
+                  <div class="ai-prompt-card-icon"><i data-lucide="activity"></i></div>
+                  <div class="ai-prompt-card-text">
+                    <h4>Inventory Health Report</h4>
+                    <p>Get a comprehensive summary of asset turnover, repairs, and stock flags.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- AI Response Box -->
+            <div class="ai-chat-panel">
+              <div class="chat-header">
+                <div class="assistant-avatar"><i data-lucide="bot"></i></div>
+                <div class="assistant-title">
+                  <h4>Inventory Insights Bot</h4>
+                  <span>Ready to analyze your local data</span>
+                </div>
+              </div>
+              
+              <div class="chat-messages" id="aiChatMessages">
+                <div class="chat-message assistant">
+                  <div class="message-bubble">
+                    Hello! I am your AI Inventory Assistant. Please select one of the analytics queries on the left, or ask me directly below about stock forecasts, active allocations, or hardware health.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="chat-input-wrapper">
+                <input type="text" id="aiChatInput" placeholder="Ask AI: e.g., 'What is our laptop turnover rate?' or 'Suggest replacements'">
+                <button class="btn-send-chat" id="btnSendAIChat"><i data-lucide="send"></i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== ASSETS VIEW ==================== -->
+        <section id="view-assets" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Assets Catalog</h1>
+              <p>View, modify, and track physical hardware inventory.</p>
+            </div>
+            <button class="btn-primary" id="btnOpenAddAssetModal">
+              <i data-lucide="plus"></i> Add Asset
+            </button>
+          </div>
+          
+          <div class="table-card">
+            <!-- Filter Bar -->
+            <div class="table-filters">
+              <div class="filter-group">
+                <input type="text" id="assetSearchFilter" class="filter-input search" placeholder="Search by name, serial, ID...">
+              </div>
+              <div class="filter-group">
+                <select id="assetCategoryFilter" class="filter-select">
+                  <option value="">All Categories</option>
+                  <!-- Populated by JavaScript -->
+                </select>
+              </div>
+              <div class="filter-group">
+                <select id="assetStatusFilter" class="filter-select">
+                  <option value="">All Statuses</option>
+                  <option value="In Stock">In Stock</option>
+                  <option value="Allocated">Allocated</option>
+                  <option value="Damaged">Damaged</option>
+                </select>
+              </div>
+              <button class="btn-outline btn-reset-filters" id="btnResetAssetFilters"><i data-lucide="rotate-ccw"></i> Reset</button>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="data-table" id="assetsTable">
+                <thead>
+                  <tr>
+                    <th>Asset ID</th>
+                    <th>Asset Name</th>
+                    <th>Serial Number</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Assigned To</th>
+                    <th>Date Added</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="assetsTableBody">
+                  <!-- Populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="table-pagination">
+              <span class="pagination-info" id="assetsPaginationInfo">Showing 1-10 of 150 assets</span>
+              <div class="pagination-controls">
+                <button class="btn-pagination" id="btnAssetPrev" disabled><i data-lucide="chevron-left"></i></button>
+                <div class="pagination-pages" id="assetsPaginationPages">
+                  <!-- Injected pages -->
+                </div>
+                <button class="btn-pagination" id="btnAssetNext"><i data-lucide="chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== CATEGORIES VIEW ==================== -->
+        <section id="view-categories" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Asset Categories</h1>
+              <p>Organize inventory, check stock distributions, and configure low-stock alerts.</p>
+            </div>
+            <button class="btn-primary" id="btnOpenAddCategoryModal">
+              <i data-lucide="plus"></i> Add Category
+            </button>
+          </div>
+          
+          <div class="categories-grid" id="categoriesGrid">
+            <!-- Injected by JavaScript -->
+          </div>
+        </section>
+        
+        <!-- ==================== ALLOCATIONS VIEW ==================== -->
+        <section id="view-allocations" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Asset Allocations</h1>
+              <p>Distribute inventory to employees and track returns.</p>
+            </div>
+            <button class="btn-primary" id="btnOpenAllocateModal">
+              <i data-lucide="user-plus"></i> Allocate Asset
+            </button>
+          </div>
+          
+          <div class="table-card">
+            <div class="table-filters">
+              <div class="filter-group">
+                <input type="text" id="allocationSearchFilter" class="filter-input search" placeholder="Search by asset, employee...">
+              </div>
+              <div class="filter-group">
+                <select id="allocationStatusFilter" class="filter-select">
+                  <option value="">All Allocations</option>
+                  <option value="Active">Active (On Loan)</option>
+                  <option value="Returned">Returned</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="data-table" id="allocationsTable">
+                <thead>
+                  <tr>
+                    <th>Allocation ID</th>
+                    <th>Asset ID</th>
+                    <th>Asset Name</th>
+                    <th>Employee Name</th>
+                    <th>Allocation Date</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="allocationsTableBody">
+                  <!-- Injected by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== RETURNS VIEW ==================== -->
+        <section id="view-returns" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Asset Returns Log</h1>
+              <p>Historical audit trail of all assets returned by employees.</p>
+            </div>
+          </div>
+          
+          <div class="table-card">
+            <div class="table-filters">
+              <input type="text" id="returnsSearchFilter" class="filter-input search" placeholder="Search returns by employee or asset...">
+            </div>
+            
+            <div class="table-responsive">
+              <table class="data-table" id="returnsTable">
+                <thead>
+                  <tr>
+                    <th>Return ID</th>
+                    <th>Asset ID / Name</th>
+                    <th>Returned By</th>
+                    <th>Allocated On</th>
+                    <th>Returned On</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="returnsTableBody">
+                  <!-- Injected by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== DAMAGE REPORTS VIEW ==================== -->
+        <section id="view-damage-reports" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Damage & Repair Logs</h1>
+              <p>Log broken items, manage repair pipelines, and write off scrap equipment.</p>
+            </div>
+            <button class="btn-primary" id="btnOpenReportDamageModal">
+              <i data-lucide="alert-octagon"></i> Log Damage Report
+            </button>
+          </div>
+          
+          <div class="table-card">
+            <div class="table-filters">
+              <div class="filter-group">
+                <input type="text" id="damageSearchFilter" class="filter-input search" placeholder="Search by asset or employee...">
+              </div>
+              <div class="filter-group">
+                <select id="damageStatusFilter" class="filter-select">
+                  <option value="">All Statuses</option>
+                  <option value="Open">Open (Pending Review)</option>
+                  <option value="Under Repair">Under Repair</option>
+                  <option value="Resolved">Resolved (Repaired)</option>
+                  <option value="Disposed">Disposed (Written Off)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="data-table" id="damageTable">
+                <thead>
+                  <tr>
+                    <th>Report ID</th>
+                    <th>Asset ID / Name</th>
+                    <th>Reported By</th>
+                    <th>Issue Description</th>
+                    <th>Reported Date</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="damageTableBody">
+                  <!-- Injected by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== EMPLOYEES VIEW ==================== -->
+        <section id="view-employees" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Employees Directory</h1>
+              <p>Manage corporate profiles and track physical hardware handovers.</p>
+            </div>
+            <button class="btn-primary" id="btnOpenAddEmployeeModal">
+              <i data-lucide="user-plus"></i> Add Employee
+            </button>
+          </div>
+          
+          <div class="table-card">
+            <div class="table-filters">
+              <div class="filter-group">
+                <input type="text" id="employeeSearchFilter" class="filter-input search" placeholder="Search employee by name, department...">
+              </div>
+              <div class="filter-group">
+                <select id="employeeDepartmentFilter" class="filter-select">
+                  <option value="">All Departments</option>
+                  <!-- Populated by JavaScript -->
+                </select>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="data-table" id="employeesTable">
+                <thead>
+                  <tr>
+                    <th>Employee ID</th>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Department</th>
+                    <th>Active Allocations</th>
+                    <th>Date Joined</th>
+                    <th class="text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="employeesTableBody">
+                  <!-- Injected by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== REPORTS VIEW ==================== -->
+        <section id="view-reports" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Inventory Reports & Analytics</h1>
+              <p>Export database records, inspect stats summaries, and download reports.</p>
+            </div>
+          </div>
+          
+          <div class="reports-grid">
+            <div class="report-card-visual">
+              <h3>Database Status Summary</h3>
+              <div class="reports-stats-subgrid">
+                <div class="report-stat-item">
+                  <h4 id="report-total-value">150</h4>
+                  <span>Total Equipment Items</span>
+                </div>
+                <div class="report-stat-item">
+                  <h4 id="report-active-allocations">32</h4>
+                  <span>Active Allocations</span>
+                </div>
+                <div class="report-stat-item">
+                  <h4 id="report-repair-rate">6.7%</h4>
+                  <span>Equipment Damaged Rate</span>
+                </div>
+                <div class="report-stat-item">
+                  <h4 id="report-utilization-rate">21.3%</h4>
+                  <span>Asset Utilization Rate</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="report-card-actions">
+              <h3>Export Data Center</h3>
+              <p>Generate comma-separated values (CSV) files of your live database tables instantly.</p>
+              
+              <div class="export-buttons-group">
+                <button class="btn-report-export" id="btnExportAssets">
+                  <i data-lucide="download"></i>
+                  <div class="btn-report-text">
+                    <strong>Export Assets CSV</strong>
+                    <span>All hardware items, serials, and current statuses</span>
+                  </div>
+                </button>
+                
+                <button class="btn-report-export" id="btnExportEmployees">
+                  <i data-lucide="download"></i>
+                  <div class="btn-report-text">
+                    <strong>Export Employees CSV</strong>
+                    <span>Corporate list, departments, and emails</span>
+                  </div>
+                </button>
+                
+                <button class="btn-report-export" id="btnExportAllocations">
+                  <i data-lucide="download"></i>
+                  <div class="btn-report-text">
+                    <strong>Export Allocations History CSV</strong>
+                    <span>Track all historical handovers and due dates</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== HISTORY VIEW ==================== -->
+        <section id="view-history" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>General Audit Trail</h1>
+              <p>Chronological security logs of all system operations.</p>
+            </div>
+          </div>
+          
+          <div class="table-card max-w-4xl">
+            <div class="table-filters">
+              <input type="text" id="historySearchFilter" class="filter-input search" placeholder="Filter audit trail logs...">
+            </div>
+            <div class="timeline-container" id="historyTimeline">
+              <!-- Injected by JavaScript -->
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== REQUESTS VIEW ==================== -->
+        <section id="view-requests" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Employee Requests Pipeline</h1>
+              <p>Review incoming requests from staff for new hardware allocations.</p>
+            </div>
+          </div>
+          
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="data-table" id="requestsTable">
+                <thead>
+                  <tr>
+                    <th>Request ID</th>
+                    <th>Employee Name</th>
+                    <th>Asset Category Needed</th>
+                    <th>Justification Purpose</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="requestsTableBody">
+                  <!-- Injected by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== REMINDERS VIEW ==================== -->
+        <section id="view-reminders" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>Reminders & Alert Center</h1>
+              <p>Review critical system notifications, low stock warnings, and overdue returns.</p>
+            </div>
+          </div>
+          
+          <div class="reminders-container">
+            <div class="reminder-section">
+              <h3 class="section-title text-red"><i data-lucide="clock"></i> Overdue Return Reminders</h3>
+              <div class="reminder-alerts-list" id="overdueAlertsList">
+                <!-- Injected by JavaScript -->
+              </div>
+            </div>
+            
+            <div class="reminder-section">
+              <h3 class="section-title text-amber"><i data-lucide="bell"></i> Low Stock Warnings</h3>
+              <div class="reminder-alerts-list" id="lowStockAlertsList">
+                <!-- Injected by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== SETTINGS VIEW ==================== -->
+        <section id="view-settings" class="content-view">
+          <div class="view-header">
+            <div>
+              <h1>System Settings</h1>
+              <p>Configure dashboard metadata, manage thresholds, and import datasets.</p>
+            </div>
+          </div>
+          
+          <div class="settings-layout">
+            <!-- Sub-panel Left: Profile & General Settings -->
+            <div class="settings-card">
+              <h3>Portal Information</h3>
+              <form id="settingsGeneralForm" class="settings-form">
+                <div class="form-group">
+                  <label for="setCompanyName">Company Portal Name</label>
+                  <input type="text" id="setCompanyName" value="Inventory System">
+                </div>
+                <div class="form-group">
+                  <label for="setPortalSubName">Portal Subheading</label>
+                  <input type="text" id="setPortalSubName" value="CORPORATE PORTAL">
+                </div>
+                <div class="form-group">
+                  <label for="setAdminName">Admin Profile Name</label>
+                  <input type="text" id="setAdminName" value="Aarav Patel4">
+                </div>
+                <div class="form-group">
+                  <label for="setAdminRole">Admin Designation</label>
+                  <input type="text" id="setAdminRole" value="Administrator">
+                </div>
+                <button type="submit" class="btn-primary">Save Portal Branding</button>
+              </form>
+            </div>
+            
+            <!-- Sub-panel Right: DATA IMPORT WIZARD -->
+            <div class="settings-card col-span-2 highlight-card">
+              <div class="wizard-header">
+                <i data-lucide="upload-cloud" class="wizard-icon"></i>
+                <div>
+                  <h3>Dataset Import Wizard</h3>
+                  <p>Paste CSV/JSON data or upload a file. We will parse and merge it into your active inventory database.</p>
+                </div>
+              </div>
+              
+              <div class="wizard-body">
+                <div class="wizard-form-row">
+                  <div class="form-group min-w-xs">
+                    <label for="importTableType">Select Database Table</label>
+                    <select id="importTableType" class="filter-select">
+                      <option value="assets">Assets Table (requires Name, Category, Serial)</option>
+                      <option value="employees">Employees Table (requires Name, Email, Department)</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="fileUploadInput">Or Select CSV/JSON File</label>
+                    <input type="file" id="fileUploadInput" accept=".csv,.json">
+                  </div>
+                </div>
+                
+                <div class="form-group mt-3">
+                  <label for="importTextArea">Or Paste Dataset Here (CSV format with headers OR JSON format array)</label>
+                  <textarea id="importTextArea" rows="6" placeholder='Example CSV (Assets):
+name,serialNumber,category,status
+MacBook Pro 16",SN-MBP123,laptop,In Stock
+Logitech Keyboard,SN-LOG456,accessory,In Stock
+
+Or JSON Format:
+[
+  {"name": "MacBook Pro 16\"", "serialNumber": "SN-MBP123", "category": "laptop"},
+  {"name": "Logitech Keyboard", "serialNumber": "SN-LOG456", "category": "accessory"}
+]'></textarea>
+                </div>
+                
+                <div class="wizard-actions">
+                  <button class="btn-primary btn-wizard-action" id="btnRunImport">
+                    <i data-lucide="check"></i> Process & Import Data
+                  </button>
+                  <button class="btn-outline" id="btnLoadExampleDataset">
+                    Load Demo Import Template
+                  </button>
+                </div>
+                
+                <div class="import-feedback-box" id="importFeedback" style="display: none;">
+                  <!-- Success or error logs injected here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+      
+    </main>
+  </div>
+  
+  
+  <!-- ==================== ACTION MODALS CONTAINER ==================== -->
+  
+  <!-- 1. ADD ASSET MODAL -->
+  <div class="modal-overlay" id="modalAddAsset">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i data-lucide="plus-circle"></i> Add New Hardware Asset</h3>
+        <button class="btn-modal-close" data-close-modal="modalAddAsset"><i data-lucide="x"></i></button>
+      </div>
+      <form id="formAddAsset" class="modal-form">
+        <div class="form-group">
+          <label for="addAssetName">Asset Name *</label>
+          <input type="text" id="addAssetName" required placeholder="e.g. Dell Latitude 7440">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="addAssetCategory">Category *</label>
+            <select id="addAssetCategory" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="addAssetSerial">Serial Number</label>
+            <input type="text" id="addAssetSerial" placeholder="e.g. DXP-998877">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addAssetStatus">Initial Status</label>
+          <select id="addAssetStatus">
+            <option value="In Stock">In Stock</option>
+            <option value="Damaged">Damaged</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-close-modal="modalAddAsset">Cancel</button>
+          <button type="submit" class="btn-primary">Create Asset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- 2. ALLOCATE ASSET MODAL -->
+  <div class="modal-overlay" id="modalAllocateAsset">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i data-lucide="user-check"></i> Allocate Hardware Asset</h3>
+        <button class="btn-modal-close" data-close-modal="modalAllocateAsset"><i data-lucide="x"></i></button>
+      </div>
+      <form id="formAllocateAsset" class="modal-form">
+        <!-- Hidden input for Asset ID -->
+        <input type="hidden" id="allocAssetId">
+        
+        <div class="form-group">
+          <label>Asset Selected</label>
+          <div class="asset-selected-preview" id="allocAssetPreview">
+            <strong>Dell XPS 15 #101</strong> (AST-002) - Laptop
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="allocEmployeeId">Assign to Employee *</label>
+          <select id="allocEmployeeId" required>
+            <option value="">Select Employee...</option>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="allocDueDate">Due Return Date *</label>
+          <input type="date" id="allocDueDate" required>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-close-modal="modalAllocateAsset">Cancel</button>
+          <button type="submit" class="btn-primary">Confirm Allocation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- 3. REPORT DAMAGE MODAL -->
+  <div class="modal-overlay" id="modalReportDamage">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i data-lucide="alert-triangle"></i> Report Hardware Damage</h3>
+        <button class="btn-modal-close" data-close-modal="modalReportDamage"><i data-lucide="x"></i></button>
+      </div>
+      <form id="formReportDamage" class="modal-form">
+        <div class="form-group">
+          <label for="dmgAssetId">Select Damaged Asset *</label>
+          <select id="dmgAssetId" required>
+            <option value="">Select Asset...</option>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="dmgEmployeeId">Reported By (Employee / User)</label>
+          <select id="dmgEmployeeId">
+            <option value="">Administrator</option>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="dmgDescription">Issue / Damage Description *</label>
+          <textarea id="dmgDescription" rows="3" required placeholder="Describe what is wrong with the device (e.g. cracked screen, failed motherboard, water damage)..."></textarea>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-close-modal="modalReportDamage">Cancel</button>
+          <button type="submit" class="btn-primary">Log Damage Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- 4. ADD EMPLOYEE MODAL -->
+  <div class="modal-overlay" id="modalAddEmployee">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i data-lucide="user-plus"></i> Add New Employee</h3>
+        <button class="btn-modal-close" data-close-modal="modalAddEmployee"><i data-lucide="x"></i></button>
+      </div>
+      <form id="formAddEmployee" class="modal-form">
+        <div class="form-group">
+          <label for="empName">Full Name *</label>
+          <input type="text" id="empName" required placeholder="e.g. Diya Reddy">
+        </div>
+        <div class="form-group">
+          <label for="empEmail">Email Address (Leave empty for corporate auto-generation)</label>
+          <input type="email" id="empEmail" placeholder="e.g. diya.reddy@corporate.com">
+        </div>
+        <div class="form-group">
+          <label for="empDepartment">Department *</label>
+          <select id="empDepartment" required>
+            <!-- Populated dynamically by javascript -->
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-close-modal="modalAddEmployee">Cancel</button>
+          <button type="submit" class="btn-primary">Add Employee</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- 5. ADD CATEGORY MODAL -->
+  <div class="modal-overlay" id="modalAddCategory">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i data-lucide="tags"></i> Add Asset Category</h3>
+        <button class="btn-modal-close" data-close-modal="modalAddCategory"><i data-lucide="x"></i></button>
+      </div>
+      <form id="formAddCategory" class="modal-form">
+        <div class="form-group">
+          <label for="catName">Category Name *</label>
+          <input type="text" id="catName" required placeholder="e.g. Server, Tablet, Audio">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="catIcon">Icon Class (Lucide name)</label>
+            <select id="catIcon">
+              <option value="hard-drive">Hard Drive</option>
+              <option value="tablet">Tablet</option>
+              <option value="headphones">Headphones</option>
+              <option value="tv">Television</option>
+              <option value="cpu">Processor / Server</option>
+              <option value="speaker">Speaker</option>
+              <option value="camera">Camera</option>
+              <option value="printer">Printer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="catColor">Color Theme</label>
+            <input type="color" id="catColor" value="#ec4899">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="catAlertThreshold">Low Stock Alert Threshold</label>
+          <input type="number" id="catAlertThreshold" value="5" min="1">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-close-modal="modalAddCategory">Cancel</button>
+          <button type="submit" class="btn-primary">Create Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Database Script -->
+  <script src="db.js"></script>
+  <!-- Main Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# SQLite database file
+inventory.db
+
+# Logs and system artifacts
+*.log
+.system_generated/
+browser/
+scratch/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

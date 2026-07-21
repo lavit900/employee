@@ -1,0 +1,11 @@
+ReportID,AssetID,EmployeeID,ReportDate,Issue,Status
+DR001,AST029,EMP027,2025-07-02,Charging Problem,Open
+DR002,AST059,EMP014,2025-09-05,Charging Problem,Under Review
+DR003,AST064,EMP030,2025-10-22,Keyboard Issue,Under Review
+DR004,AST085,EMP019,2025-06-04,Battery Failure,Under Review
+DR005,AST102,EMP020,2025-09-23,Physical Damage,Under Review
+DR006,AST116,EMP033,2025-09-11,Physical Damage,Under Review
+DR007,AST129,EMP032,2025-09-20,Broken Screen,Open
+DR008,AST143,EMP042,2025-11-16,Battery Failure,Under Review
+DR009,AST147,EMP017,2025-09-28,Keyboard Issue,Under Review
+DR010,AST150,EMP044,2025-07-30,Keyboard Issue,Open
