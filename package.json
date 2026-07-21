@@ -1,0 +1,11 @@
+{
+  "name": "employee-inventory-system",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
